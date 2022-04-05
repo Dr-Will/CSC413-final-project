@@ -18,7 +18,7 @@ def get_torch_creature_data(filename="Flickr8k.token.modified.txt"):
         picture_ids.append(data[i][0][:-2])
         captions.append(data[i][1][:-2])
     
-    creature_imgs = [transform(torchvision.io.read_image(creature_path +'Flicker8k_Dataset/' +i ,mode = torchvision.io.ImageReadMode.RGB)).unsqueeze(0) for i in picture_ids]
+    creature_imgs = [transform(torchvision.io.read_image(creature_path +'Flicker8k_Dataset/' +i ,mode = torchvision.io.ImageReadMode.RGB)).float().unsqueeze(0) for i in picture_ids]
     torch_creature_imgs = torch.cat(creature_imgs)
     return (torch_creature_imgs, captions)
     
@@ -38,7 +38,7 @@ def get_torch_item_data():
         picture_ids.append(data[i][0])
         captions.append(data[i][1][:-2])
     
-    item_imgs = [transform(torchvision.io.read_image(item_path + 'images/images/' + i,mode = torchvision.io.ImageReadMode.RGB)).unsqueeze(0) for i in picture_ids]
+    item_imgs = [transform(torchvision.io.read_image(item_path + 'images/images/' + i,mode = torchvision.io.ImageReadMode.RGB)).float().unsqueeze(0) for i in picture_ids]
     torch_item_imgs = torch.cat(item_imgs)
     return (torch_item_imgs, captions)
 
@@ -58,7 +58,7 @@ def get_creature_data(filename="Flickr8k.token.modified.txt"):
         picture_ids.append(data[i][0][:-2])
         captions.append(data[i][1][:-2])
     
-    creature_imgs = [torchvision.io.read_image(creature_path +'Flicker8k_Dataset/' +i ,mode = torchvision.io.ImageReadMode.RGB) for i in picture_ids]
+    creature_imgs = [torchvision.io.read_image(creature_path +'Flicker8k_Dataset/' +i ,mode = torchvision.io.ImageReadMode.RGB).float() for i in picture_ids]
 
     return (creature_imgs, captions)
     
@@ -78,7 +78,7 @@ def get_item_data():
         picture_ids.append(data[i][0])
         captions.append(data[i][1][:-2])
     
-    item_imgs = [torchvision.io.read_image(item_path + 'images/images/' + i,mode = torchvision.io.ImageReadMode.RGB) for i in picture_ids]
+    item_imgs = [torchvision.io.read_image(item_path + 'images/images/' + i,mode = torchvision.io.ImageReadMode.RGB).float() for i in picture_ids]
 
     return (item_imgs, captions)
 
