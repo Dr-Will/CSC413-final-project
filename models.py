@@ -56,4 +56,13 @@ class PositionalEncoding(nn.Module):
         
         
 
+
+
+### self implemented transformer 
+class Self_attention(nn.Module):
+    def __init__(self, embed_size, heads):
+        super(Self_attention,self).__init__()
         
+
+
+### CNN-LSTM
