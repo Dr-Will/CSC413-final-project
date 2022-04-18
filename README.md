@@ -144,7 +144,7 @@ All data is collected from these two sources. (https://github.com/jbrownlee/Data
 Todo ( another one source from, 数据items那个网站):
 
 
-CNN Model
+##CNN Model
 
 
 Pal, L. (2021, December 11). Image classification: A comparison of DNN, CNN and Transfer Learning approach. Medium. https://medium.com/analytics-vidhya/image-classification-a-comparison-of-dnn-cnn-and-transfer-learning-approach-704535beca25
@@ -169,6 +169,7 @@ Checkpoint_path=None: saving data, can be used quickly later.
 
 
 Figures:
+
 
 
 
