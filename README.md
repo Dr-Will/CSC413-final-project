@@ -236,8 +236,11 @@ Ethical implications:
 
 Authors:
 Yulin Wang: 
+
 Tian Ze Jia: Building CNN model, training the model and tuning the hyperparameters. Tested the model and produced the successful and unsuccessful examples. Write the final report.
+
 Hongwei Wen: 
+
 Shijia Wu: Building CNN model to justify difference between the category of images. Searching, cleaning, resizing data as the size we need. Testing CNN model and fixing errors. Write the final report. 
 
 
