@@ -117,23 +117,27 @@ For a computer, it does not have as much experience with things as humans do. So
 
 
 Purpose:
+
   Therefore, we have developed a machine learning system that can learn unsupervised and thus do the job of representing the content of a picture as a text. It can do sorting and reading. It also has great significance for society. By converting pictures to text and then text to speech, it can produce the information stored in the pictures easily accessible to people with visual disabilities.
 
  We are aiming to train a transformer model that generates reasonable captions outputs from picture inputs, while investigating the impacts of grouping image dataset on accuracy of captions.
   The model will not be limited by the amount of elements within a picture, where the images contain creatures, and images that only contain items instead of creatures, the goal for the model is to distinguish the difference.
 
 Model tasks:
+
   The task aims to train a RNN model that receives a picture as input then generates a reasonable caption for that picture. Also to investigate whether grouping the image first helps with the quality of caption.
   Since we want to challenge the capacity of the model, we want to build a model that is not limited to the elements in the pictures. Therefore, we choose images that contain creatures, and images that only contain items instead of creatures. We hope the model we build can tell the difference between different images accurately.
 
 
 Model explained:
+
   We will train two different models based on two different dataset, one is for creatures, the other is for items. We use CNN model to justify whether this image belongs to the category of creatures or items. In this model, we use the basic model without back normalization or dropout. Each model will contain a couple of CNN layers followed by an attention mechanism to embed our image, followed by an RNN layer(transformer). Then we will train another model to classify whether the input image is a creature or an item, then put it to the correct model described above to generate the final caption.
 
   We will also combine the two dataset to form a single huge dataset and try to train a single model based on this large dataset to compare the results with the separate one.
 
 
 Dataset:
+
   There are two packages of images. The pictures in one of the datasets are all about creatures. The other one is about items.
 Firstly, all images are stored together. Then they are shuffled since they should be randomly stored in different groups, such as training set, validation set and testing set.. Therefore, we can use an exact dataset to train the model or test the model. It can help us build a better model which is more efficient.
 Not only the relevant photos are contained in each dataset, but also containing a file with the corresponding caption for each photo.
@@ -141,10 +145,13 @@ Not only the relevant photos are contained in each dataset, but also containing 
   The first dataset contains a folder with 8090 photographs in JPEG format and a text file with their corresponding captions. All these photographs contain at least a person or an animal. The second dataset contains 11577 photographs in JPEG format. All these photographs contain merchandise like carpets, stamps, and jewelry. Therefore, the total number of images is 19667. After shuffling, the training set has 13766 images, validation set has 3933 images, testing set has 1968 images.
 
 All data is collected from these two sources. (https://github.com/jbrownlee/Datasets/blob/master/Flickr8k_Dataset.names)
-Todo ( another one source from, 数据items那个网站):
+Todo ( another one source from):
 
 
-##CNN Model
+CNN Model
+
+
+![ph6](https://user-images.githubusercontent.com/71194632/163885047-ce8bbddb-944c-46e6-a2a4-8852c34b2aba.jpg)
 
 
 Pal, L. (2021, December 11). Image classification: A comparison of DNN, CNN and Transfer Learning approach. Medium. https://medium.com/analytics-vidhya/image-classification-a-comparison-of-dnn-cnn-and-transfer-learning-approach-704535beca25
@@ -154,6 +161,7 @@ Here is a simple description of CNN. An image is divided into a few parts. By an
 
 
 Model Parameters:
+
 Model: what model we used to do training.
 Train_data: dataset that we used for training data.
 Val_data: dataset that we used for validation data.
@@ -170,6 +178,12 @@ Checkpoint_path=None: saving data, can be used quickly later.
 
 Figures:
 
+![ph5](https://user-images.githubusercontent.com/71194632/163884849-653da7ea-7200-43f1-8bb1-edec6bbb6b15.png)
+
+
+![ph4](https://user-images.githubusercontent.com/71194632/163884841-e528034d-a99e-40a8-a582-8679b720372a.png)
+
+![ph3](https://user-images.githubusercontent.com/71194632/163884742-d0dfb32e-ad8b-4e01-b73a-22966c617401.png)
 
 
 
@@ -177,6 +191,7 @@ Figures:
 
 
 Data Summary:
+
 By the third figure, we can know that the training accuracy and validation accuracy are 94% and 94%, separately. In 19667 images, only 1180 images are predicted incorrectly. It is a great result. Because we have high accuracy while it is not overfit. The loss we get is around 0.0007 which is low enough. Therefore, the model is very effective..
 
 The size of images we download are not 224 * 224. Therefore, we use a tool to adjust the size of them. In this process, there are two images that can not be adjusted. We decide to remove them in order to all 224 * 224 images. Then we use Imagefolder and Dataloader to transformate the image so that we can use tensor to do the tasks.
@@ -185,20 +200,27 @@ We were using 0.0001 as our learning rate, but we found out that it took too muc
 
 
 Successful example:
+
 Here is one figure that we successfully predicted. 
+
 <img width="209" alt="ph2" src="https://user-images.githubusercontent.com/71194632/163875823-c161b027-911d-4619-b489-15847a10713f.png">
 
 
 Unsuccessful example:
+
 Here is one figure that we unsuccessfully predicted. There are hands and clothes in this picture. Therefore, the model doesn’t know whether it should be determined as creatures or items.
+
 <img width="204" alt="ph1" src="https://user-images.githubusercontent.com/71194632/163875691-e8c77962-bb21-46ef-9f56-982666be3e55.png">
 
 
 Quantitative measures
+
 The model is able to process approximately 20000 images in a decent amount of time, with high accuracies, which means the differentiation with CNN model and captions made by RNN model is highly accurate. With the CNN model, we have tried to predict with mini-batch first, then increase the batch size as we tune the parameters and optimize the model, which now can process all images within the image dataset. 
 
 Quantitative and qualitative results
+
 Quantitative results: 
+
 As mentioned in the above question, the model is able to process 19667 images within a dataset with high accuracies:
 CNN model training accuracy: 95%
 CNN model validation accuracy: 95%
@@ -228,6 +250,7 @@ Unsuccessful example:
 
 
 Ethical implications:
+
   First of all, image caption is a function that we use in people's usual lives. Although machine learning nowadays is powerful enough to do captions for many images, it is hard for a model to take parameters that it never learned about or something abstract. Therefore, we certainly do not recommend anyone who purely and fully relies on this model for commercial use. This is a disclaimer to all people that we are not responsible for any kind of personal business loss over this machine learning model.
 
   People may use this model to generate useless comments on social media like Instagrams and Twitter, this will make the poster confused and waste their time on replying to this. 
@@ -236,6 +259,7 @@ Ethical implications:
 
 
 Authors:
+
 Yulin Wang: 
 
 Tian Ze Jia: Building CNN model, training the model and tuning the hyperparameters. Tested the model and produced the successful and unsuccessful examples. Write the final report.
