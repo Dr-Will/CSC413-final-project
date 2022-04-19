@@ -31,7 +31,7 @@ All data is collected from these **two sources**.
 
 
 
-## CNN Model
+## CNN Model([CNN notebook](./Classification_CNN_Model.ipynb))
 
 ![](./pictures/CNN.jpg)
 
@@ -114,7 +114,7 @@ Checkpoint_path**=None**: saving data, can be used quickly later.
 
   This is an unsuccessful example of the CNN model, tensor([0]) represents creatures, and tensor([1]) represents items. From this example we can tell, by human eyes, a lady doing her makeup at a bar, which is for sure to be classified into the creature category. For some reason, maybe due to colour elements, the model classified this image as an item, this is due to high but not 100% accuracy. 
 
-## Transformer
+## Transformer([transformer notebook](./models_cuda_cbc.ipynb))
 
 
 
