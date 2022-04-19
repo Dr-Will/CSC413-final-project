@@ -2,7 +2,8 @@
 import torchvision
 import torch
 import os
-transform = torchvision.transforms.Compose([torchvision.transforms.Resize((224,224))])
+
+transform = torchvision.transforms.Compose([torchvision.transforms.CenterCrop((224,224))])
 def get_torch_creature_data(filename="Flickr8k.token.modified.txt"):
     '''
         This function will return the original imgs from the creature folder in the list of tensor
@@ -18,7 +19,15 @@ def get_torch_creature_data(filename="Flickr8k.token.modified.txt"):
         picture_ids.append(data[i][0][:-2])
         captions.append(data[i][1][:-2])
     
-    creature_imgs = [transform(torchvision.io.read_image(creature_path +'Flicker8k_Dataset/' +i ,mode = torchvision.io.ImageReadMode.RGB)).float().unsqueeze(0) for i in picture_ids]
+    creature_imgs = []
+    for i in picture_ids:
+        img = torchvision.io.read_image(creature_path +'Flicker8k_Dataset/' +i ,mode = torchvision.io.ImageReadMode.RGB)
+        min_side = min(img.shape[1], img.shape[2])
+        transform = torchvision.transforms.Compose([torchvision.transforms.CenterCrop((min_side,min_side))\
+                                            ,torchvision.transforms.Resize((224,224))])
+        transformed_img = transform(img)
+        creature_imgs.append(transformed_img.float().unsqueeze(0))
+    
     torch_creature_imgs = torch.cat(creature_imgs)
     return (torch_creature_imgs, captions)
     
