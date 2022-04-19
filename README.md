@@ -1,8 +1,6 @@
 
 # Image Caption by using CNN & Transformer
 
-Author: Yulin Wang, Hongwei Wen, 
-
 For a computer, it does not have as much experience with things as humans do. So it is not a simple task when you ask a computer to analyze a picture and tell all the contents in the picture. It is like a human baby, it doesn't know what's in the picture until it does the learning.
 
 #### Purpose:
@@ -81,9 +79,23 @@ Checkpoint_path**=None**: saving data, can be used quickly later.
 
   We were using 0.0001 as our learning rate, but we found out that it took too much time on training. So we decided to use a larger learning rate which is 0.001. It can reduce the time, but bring the cost of arriving at the final set of weights. We were using 256 as our batch size. It produced too many iterations, though the accuracy didn’t change after the 80th iteration. So we decided to use 1024 as our batch size which brought less iteration and saved some time.
 
+* #### Results
+
+  Here is one figure that we successfully predicted. 
+
+  <img src="./pictures/CNN correct.png" style="zoom:50%;" />
+
+  
+
+  Here is one figure that we unsuccessfully predicted. There is a face in this picture. Therefore, the model doesn’t know whether it should be determined as creatures or items.
+
+  <img src="./pictures/CNN incorrect.png" style="zoom:50%;" />
+
 * #### Quantitative measures
 
   The model is able to process approximately 20000 images in a decent amount of time, with high accuracies, which means the differentiation with CNN model and captions made by RNN model is highly accurate. With the CNN model, we have tried to predict with mini-batch first, then increase the batch size as we tune the parameters and optimize the model, which now can process all images within the image dataset.
+
+  
 
 * #### Quantitative and qualitative results
 
@@ -160,7 +172,21 @@ Checkpoint_path**=None**: saving data, can be used quickly later.
   | ----------------------------------------- | ------------------------------ |
   | ![](./pictures/accuracy curve.png)        | ![](./pictures/loss curve.png) |
 
-  
+* #### Hyperparameter training
+
+  Final values:
+
+  \# of heads: 8
+
+  \# embedding size: 128
+
+  batch size: 30
+
+  learning rate: 0.001
+
+  num of epochs: 500
+
+  dropout rate: 0.1
 
 #### Dataset:
 
@@ -198,11 +224,9 @@ It performs reasonably on smaller size data(<100),but not very well in larger da
 
 ![](./pictures/justification.png)
 
-We suspect that this is because the error produced early in a sentence will lead to further mistakes later in the sentence.However, this results seems to be addressable by smaller sample size, so we think that the hyperparameter should be tuned by bigger dataset, but 50 epochs takes 90 minutes already, we have tried a few hyperparameters. For example, using learning rate of 0.001 for 500 epochs, it takes the whole night to train, but the loss curve still fluctuates heavily, which implies we should use a lower learning rate, but when lowering the learning rate to 0.0001 it just simply takes way too long to train and we dont have the enough resources to train it.
+  We suspect that this is because the error produced early in a sentence will lead to further mistakes later in the sentence. However, this results seems to be addressable by smaller sample size, so we think that the hyperparameter should be tuned by bigger dataset, but 50 epochs takes 90 minutes already, we have tried a few hyperparameters. For example, using learning rate of 0.001 for 500 epochs, it takes the whole night to train, but the loss curve still fluctuates heavily, which implies we should use a lower learning rate, but when lowering the learning rate to 0.0001 it just simply takes way too long to train and we dont have the enough resources to train it.
 
-
-
-
+Given the ability of the overfit for small sample size of our model, we believe that given enough time and resources, our model will perform reasonably well.
 
 
 
@@ -212,3 +236,12 @@ First of all, image caption is a function that we use in people's usual lives. A
 
 People may use this model to generate useless comments on social media like Instagrams and Twitter, this will make the poster confused and waste their time on replying to this. This is also a great implementation for picture to voice, for the group of people with disabilities, by generating captions and using machine learning to build another model to generate voice from text. It also increases the speed of finding similar pictures, because image caption is based on generating key words and connecting them into a sentence description, by generating those keywords, it is possible to search similar images with the given image. 
 
+**Authors:**
+
+Yulin Wang: Building Transformer model to produce captions for images. Searching, cleaning, resizing data as the size we need. Testing Transformer model and fixing errors. Write the final report. 
+
+Tian Ze Jia: Building CNN model, training the model and tuning the hyperparameters. Tested the model and produced the successful and unsuccessful examples. Write the final report.
+
+Hongwei Wen: Building Transformer model, training the model and tuning the hyperparameters. Tested the model and produced the successful and unsuccessful examples. Write the final report.
+
+Shijia Wu: Building CNN model to justify difference between the category of images. Searching, cleaning, resizing data as the size we need. Testing CNN model and fixing errors. Write the final report. 
