@@ -65,7 +65,9 @@ Checkpoint_path**=None**: saving data, can be used quickly later.
 
 * #### Figures
   <img src="./pictures/CNN loss curve.png" style="zoom:50%;" />
+  
   <img src="./pictures/CNN accuracy curve.png" style="zoom:50%;" />
+  
   <img src="./pictures/CNN iteration.png" style="zoom:50%;" />
 
 * #### Data Summary
