@@ -1,3 +1,4 @@
+
 # Image Caption by using CNN & Transformer
 
 Author: Yulin Wang, Hongwei Wen, 
@@ -189,6 +190,8 @@ We collect data from github (https://github.com/jbrownlee/Datasets/releases/down
 
 
 
+
+<<<<<<< HEAD
 #### Justification
 
 It performs reasonably on smaller size data(<100),but not very well in larger datasets, for the full dataset we talked about above, the model performs poorly when given only the start token, but when providing the target caption (with mask), it produces reasonable results.
@@ -208,3 +211,4 @@ We suspect that this is because the error produced early in a sentence will lead
 First of all, image caption is a function that we use in people's usual lives. Although machine learning nowadays is powerful enough to do captions for many images, it is hard for a model to take parameters that it never learned about or something abstract. Therefore, we certainly do not recommend anyone who purely and fully relies on this model for commercial use. This is a disclaimer to all people that we are not responsible for any kind of personal business loss over this machine learning model.
 
 People may use this model to generate useless comments on social media like Instagrams and Twitter, this will make the poster confused and waste their time on replying to this. This is also a great implementation for picture to voice, for the group of people with disabilities, by generating captions and using machine learning to build another model to generate voice from text. It also increases the speed of finding similar pictures, because image caption is based on generating key words and connecting them into a sentence description, by generating those keywords, it is possible to search similar images with the given image. 
+
