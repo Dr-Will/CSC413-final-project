@@ -64,9 +64,9 @@ Num_epochs**=**3: a hyperparameter that defines the number times that the learni
 Checkpoint_path**=None**: saving data, can be used quickly later.
 
 * #### Figures
-  <img src="./pictures/CNN loss curve.png" style="zoom:50%;" />\
+  <img src="./pictures/CNN loss curve.png" style="zoom:50%;" />
   
-  <img src="./pictures/CNN accuracy curve.png" style="zoom:50%;" />\
+  <img src="./pictures/CNN accuracy curve.png" style="zoom:50%;" />
   
   <img src="./pictures/CNN Iteration.png" style="zoom:50%;" />
 
